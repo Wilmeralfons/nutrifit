@@ -1,0 +1,171 @@
+<!-- Documento HTML corregido con imágenes, PDF, formulario y JS dinámico -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NutriFit - Vida Saludable</title>
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <style>
+    body {
+      font-family: 'Quicksand', sans-serif;
+      margin: 0;
+      background: linear-gradient(to bottom, #e8f5e9, #ffffff);
+      color: #333;
+    }
+    header {
+      background: linear-gradient(135deg, #43a047, #66bb6a);
+      color: white;
+      padding: 40px 20px;
+      text-align: center;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
+    header h1 {
+      font-size: 3em;
+      margin: 0;
+    }
+    header p {
+      font-size: 1.3em;
+    }
+    nav {
+      background-color: #2e7d32;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      padding: 10px 0;
+    }
+    nav a {
+      color: white;
+      padding: 10px 20px;
+      text-decoration: none;
+      border-radius: 20px;
+      transition: all 0.3s;
+    }
+    nav a:hover {
+      background-color: #a5d6a7;
+      color: #1b5e20;
+    }
+    section {
+      padding: 40px 20px;
+      max-width: 1000px;
+      margin: auto;
+    }
+    h2 {
+      color: #2e7d32;
+      border-left: 6px solid #81c784;
+      padding-left: 15px;
+      font-size: 2em;
+    }
+    ul, .extra-info, form {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      line-height: 1.6;
+      margin-top: 20px;
+    }
+    img {
+      width: 100%;
+      max-height: 300px;
+      object-fit: cover;
+      border-radius: 10px;
+      margin-top: 20px;
+    }
+    button {
+      background-color: #43a047;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 1em;
+      margin-top: 20px;
+    }
+    button:hover {
+      background-color: #2e7d32;
+    }
+    footer {
+      background-color: #388e3c;
+      color: white;
+      text-align: center;
+      padding: 25px;
+      margin-top: 40px;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>🥗 NutriFit</h1>
+  <p>Tu guía para una vida más saludable y llena de energía</p>
+</header>
+
+<nav>
+  <a href="#comidas">🥦 Comidas Saludables</a>
+  <a href="#rutinas">📅 Rutinas</a>
+  <a href="#info">📚 Información</a>
+  <a href="#contacto">📩 Contacto</a>
+</nav>
+
+<section id="comidas">
+  <h2>🥑 Comidas Saludables</h2>
+  <p>Estos alimentos te darán la energía y nutrición que necesitas para sentirte bien cada día:</p>
+  <img src="https://images.unsplash.com/photo-1543353071-873f17a7a088" alt="comida saludable">
+  <ul>
+    <li>🥬 Verduras frescas: espinaca, brócoli, zanahoria, lechuga</li>
+    <li>🍓 Frutas naturales: manzana, plátano, fresa, naranja, mango</li>
+    <li>🍗 Proteínas magras: pollo, pescado, huevo, tofu, legumbres</li>
+    <li>🌾 Granos integrales: avena, arroz integral, quinoa, cebada</li>
+    <li>🥜 Grasas saludables: aguacate, nueces, almendras, aceite de oliva</li>
+    <li>🥛 Lácteos bajos en grasa: yogurt griego, leche descremada, queso bajo en grasa</li>
+  </ul>
+</section>
+
+<section id="rutinas">
+  <h2>📅 Rutinas Nutricionales</h2>
+  <p>Haz clic abajo para descargar una rutina semanal en PDF:</p>
+  <button onclick="descargarPDF()">📄 Descargar Rutina</button>
+</section>
+
+<section id="info">
+  <h2>📚 Información Nutricional Relevante</h2>
+  <div class="extra-info">
+    <h3>🍽️ ¿Qué es una alimentación balanceada?</h3>
+    <p>Una alimentación balanceada incluye la proporción adecuada de carbohidratos, proteínas, grasas saludables, vitaminas y minerales.</p>
+  </div>
+  <div class="extra-info">
+    <h3>💧 Hidratación</h3>
+    <p>Beber al menos 8 vasos de agua al día mejora la digestión, regula la temperatura y elimina toxinas.</p>
+  </div>
+</section>
+
+<section id="contacto">
+  <h2>📩 Contacto y Consejos</h2>
+  <form action="https://formsubmit.co/tu-correo@ejemplo.com" method="POST">
+    <label>Nombre:<br><input type="text" name="name" required></label><br><br>
+    <label>Email:<br><input type="email" name="email" required></label><br><br>
+    <label>Mensaje:<br><textarea name="message" rows="4" required></textarea></label><br><br>
+    <button type="submit">Enviar</button>
+  </form>
+</section>
+
+<footer>
+  <p>&copy; 2025 NutriFit. Diseñado con 💚 para tu bienestar.</p>
+</footer>
+
+<script>
+  function descargarPDF() {
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF();
+    doc.text("Rutina Semanal Nutricional", 10, 10);
+    doc.text("Día 1: Avena + fruta", 10, 20);
+    doc.text("Día 2: Ensalada de atún", 10, 30);
+    doc.text("Día 3: Pollo + arroz integral", 10, 40);
+    doc.save("rutina_nutricional.pdf");
+  }
+</script>
+
+</body>
+</html>
